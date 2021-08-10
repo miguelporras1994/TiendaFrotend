@@ -35,13 +35,32 @@ $yellow : #ffe600;
 
     }
 
-
+.Container-search{
+    width: 770px;
+    height: 45px;
+    margin:  25px;
+}
 
 .search { 
     padding: 8px 50px;
-    margin:  25px;
     height: 24px;
     width: 598px;
     border: 0px;
     outline: none
 }
+
+.buttonsearch{
+    height: 40px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: honeydew;
+    //  border: 0px;
+}
+
+
+.searchimage{
+    padding: 8px 50px;
+    width:22px;
+    height:2px;
+}
+
