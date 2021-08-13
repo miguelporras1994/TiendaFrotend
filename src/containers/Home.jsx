@@ -8,18 +8,20 @@ import '../assets/styles/components/Home.scss';
 import '../assets/App.scss';
 import UseInitialState from '../hooks/UseInitialState';
 
-const Home = ({result}) => {
+const Home = ({Result}) => {
+  console.log(Result)
+  // const product = UseInitialState('http://localhost:3002/api/products');
+  // console.lo g(product);
+  //  var prueba = result;
 
-  const product = UseInitialState('http://localhost:3002/api/products');
-  console.log(product);
-
-  return product.length === 0 ? <h1>cargando ..</h1> : (
-    <>
+  return Result.length  == 0 ? <h1>cargando ..</h1> : (
+    <> 
+    
       <div className='Container'>
         <section className='carousel_Search'>
           <Filter />
           <ContainerProduct>
-            {product.data.map((items) => <Product key={items._id} {...items} />)}
+            {Result.map(item => <Product key={item._id} {...item} />)}
           </ContainerProduct>
         </section>
       </div>
@@ -30,7 +32,7 @@ const Home = ({result}) => {
 
 const mapStateToProps = (state) => {
   return {
-    result: state.result,
+    Result: state.result,
   };
 };
 

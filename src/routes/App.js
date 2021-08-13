@@ -5,6 +5,7 @@ import Home from '../containers/Home';
 import Details from '../containers/Details';
 import NotFound from '../containers/NotFound';
 import Layout from '../components/Layout';
+import Admin from '../containers/Admin'
 
 const App = () => (
 
@@ -13,6 +14,7 @@ const App = () => (
       <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/detalles/:id' component={Details} />
+        <Route exact path='/admin' component={Admin} />
         <Route component={NotFound} />
       </Switch>
     </Layout>

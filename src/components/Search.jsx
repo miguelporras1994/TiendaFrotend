@@ -2,8 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import '../assets/styles/components/Header.scss';
 // import Lupa from '../assets/static/lupa.png';
+import { connect } from 'react-redux';
+import { Search01 } from '../actions';
 
-const Search = () => {
+const Search = (props) => {
 
   const [itemsearch, setValues] = useState({
     search: '',
@@ -14,15 +16,14 @@ const Search = () => {
       ...itemsearch,
       [event.target.name]: event.target.value,
     });
-
-    // const prueba = event.target.name = event.target.value;
-    // console.log(prueba);
+  
   };
 
   const handleSumbit = (event) => {
     event.preventDefault();
+    console.log("estoy aqui")
     console.log(itemsearch);
-
+    props.Search01(itemsearch)
   };
 
   return (
@@ -50,5 +51,11 @@ const Search = () => {
   );
 };
 
-export default Search;
+// export default Search;
+
+const mapDispatchToProps = {
+  Search01,
+};
+
+export default connect(null, mapDispatchToProps)(Search);
 
