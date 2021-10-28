@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import '../assets/styles/components/Header.scss';
 // import Lupa from '../assets/static/lupa.png';
 import { connect } from 'react-redux';
-import { Search01 } from '../actions';
+import { SearchProduct } from '../actions';
 
 const Search = (props) => {
 
@@ -21,9 +21,8 @@ const Search = (props) => {
 
   const handleSumbit = (event) => {
     event.preventDefault();
-    console.log("estoy aqui")
-    console.log(itemsearch);
-    props.Search01(itemsearch)
+
+    props.SearchProduct(itemsearch)
   };
 
   return (
@@ -51,10 +50,9 @@ const Search = (props) => {
   );
 };
 
-// export default Search;
 
 const mapDispatchToProps = {
-  Search01,
+  SearchProduct,
 };
 
 export default connect(null, mapDispatchToProps)(Search);

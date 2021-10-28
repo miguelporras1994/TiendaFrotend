@@ -4,7 +4,7 @@ import '../assets/styles/components/Home.scss';
 // import Edit from '../assets/static/editar.png';
 import logo from '../assets/static/Mitienda.png';
 
-const Product = ({ _id, title, price, ulrpicture }) => (
+const Productadmin = ({ _id, title, price, ulrpicture }) => (
 
   <div className='carousel__item-Search'>
     <div className='carousel__item-Search-img'>
@@ -14,6 +14,15 @@ const Product = ({ _id, title, price, ulrpicture }) => (
     </div>
    
     <div className='carousel__item-Search-details'>
+    <Link to={`/editarproducto/${_id}`}>
+    <img
+                className="carousel-item__details--img"
+                src={logo}
+                alt="Plus Icon"
+                width= "50px"
+                // onClick={handleSetFavorite}
+            />
+            </Link>
       <p>{price}</p>
       <p>{title}</p>
     </div>
@@ -21,4 +30,4 @@ const Product = ({ _id, title, price, ulrpicture }) => (
 
 );
 
-export default Product;
+export default Productadmin;

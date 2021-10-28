@@ -1,55 +1,45 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Filter from '../components/Filter';
 import ContainerProduct from '../components/ContainerProduct';
-import Product from '../components/Product';
+import Productadmin from '../components/Productadmin'
 import '../assets/styles/components/Home.scss';
 import '../assets/App.scss';
-import UseInitialState from '../hooks/UseInitialState';
+import { Link } from 'react-router-dom';
+import { SaveSearch } from '../actions';
 
-const Admin = ({Result}) => {
+const Admin = (props) => {
 
-  // function Example() {
-  //   const [show, setShow] = useState(false);
-  
-  //   const handleClose = () => setShow(false);
-  //   const handleShow = () => setShow(true);
-    
+  const  setValues = (event) => {
+    console.log(event);
+    props.SaveSearch(event);
+      };
 
-  return Result.length  == 0 ? <h1>cargando ..</h1> : (
+if(props.Result.length  == 0){
+useEffect(() => {
+fetch(`http://localhost:3002/api/products`)
+ .then((Response) => Response.json())
+ .then((data) => setValues(data.data));
+}, []);
+};
+
+
+  return props.Result.length  == 0 ? <h1>cargando ..</h1> : (
     <> 
     
       <div className='Container'>
-       <button >Crear Producto</button>
+      <Link to={`/crearproducto`}>
+      <button className='ButtonCreate' >Crear Producto</button>
+      </Link>
+      
         <section className='carousel_Search'>
           <Filter />
           <ContainerProduct>
-            {Result.map(item => <Product key={item._id} {...item} />)}
+            {props.Result.map(item => <Productadmin key={item._id} {...item} />)}
           </ContainerProduct>
         </section>
       </div>
-
-
-      {/* <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button> */}
-{/* 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal> */}
-
     </>
   );
 };
@@ -60,4 +50,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(Admin);
+const mapDispatchToProps = {
+  SaveSearch, 
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Admin);

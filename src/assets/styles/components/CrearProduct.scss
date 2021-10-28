@@ -1,0 +1,107 @@
+.ContentProduct{
+     width: 800px;
+    margin: 0 auto;
+    display: flex;
+    height: 400px;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+
+
+.content-button{
+    justify-content: center;
+   
+}
+
+.title {
+    margin: 6px 100px;
+}
+
+
+
+
+.from-input {
+    width: 40%;
+    height: 9%;
+    margin: 10px;
+    padding-left: 5px;
+    align-content: center;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+    border:0px;
+}
+
+
+.from-input_url {
+    width: 90%;
+    height: 9%;
+    margin: 10px;
+    padding-left: 5px;
+    align-content: center;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+    border:0px;
+}
+
+.from-input_despcription{
+    width: 90%;
+    height: 30%;
+    margin: 10px;
+    padding-left: 5px;
+    align-content: center;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+    border:0px;
+}
+
+
+
+
+.content-button{
+    width: 800px;
+    margin: 0 auto;
+    height: 100px;
+    justify-content: space-around;
+    align-items: stretch;
+    
+  }
+ 
+
+
+  .submit-home{
+    width: 40%;
+    border-radius: 10px;
+    margin: 20px 60px;
+    height: 40%;
+    padding: 10px;
+    text-align: center;
+    color: azure;
+    background-color:  hsl(54, 73%, 48%);
+    font-weight: bold;
+  }
+
+  .submit-back{
+    background-color: #cb3234;
+    width: 30%;
+  
+  }
+
+
+  .ButtonCreate{
+    width: 30%;
+    border-radius: 10px;
+    margin: 30px 60px;
+    height: 30%;
+    padding: 10px;
+    text-align: center;
+    color: azure;
+    background-color:  hsl(54, 73%, 48%);
+    font-weight: bold;
+  }
