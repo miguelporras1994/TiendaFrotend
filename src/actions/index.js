@@ -1,7 +1,6 @@
 import axios from 'axios';
-// require('dotenv').config();
 
-// const { ENV, PORT } = process.env;
+const service = 'http://localhost:3002'
 
 export const SaveSearch = payload => ({
     type: 'Save_Search',
@@ -24,13 +23,15 @@ export const SearchProduct = (props) => {
          }
         
        }
-        console.log(props.search)
+
     axios({
     
-      url: `${process.env.REACT_APP_API_URL}/api/search/${props.search}`,
+      url: `${service}/api/search/${props.search}`,
       method: 'get',
     })
       .then(({ data }) => {
+        console.log(data.data)
+        window.localStorage.setItem("text",JSON.stringify(data.data))
         dispatch(SaveSearch(data.data));
      
       })
@@ -42,7 +43,7 @@ export const CreateProducts = (props) => {
 
   return (dispatch) => {
     axios({
-      url: `${process.env.API_URL}/api/products`,
+      url: `${service}/api/products`,
       method: 'post',
       data: props,
 

@@ -12,19 +12,27 @@ import '../assets/App.scss';
 
 const Home = (props) => {
 
-  const  setValues = (event) => {
+  const setValues = (event) => {
+         console.log("Buscando prueba 2 ")
          console.log(event);
-         props.SaveSearch(event);
-   };
+         if(event === null || event.length === 0){
+         useEffect(() => {
+          fetch(`http://localhost:3002/api/products`)
+            .then((Response) => Response.json())
+            .then((data) => props.SaveSearch(data.data));
+        }, []);
+      }
+      else{
+        props.SaveSearch(event);
+      }
+    };
     
 
-if(props.Result.length  == 0){
-  useEffect(() => {
-    fetch(`http://localhost:3002/api/products`)
-      .then((Response) => Response.json())
-      .then((data) => setValues(data.data));
-  }, []);
-
+if(props.Result.length ===  0 ){
+  let local = window.localStorage.getItem('text')
+  console.log("estoy en el home ")
+  console.log(local)
+  setValues(JSON.parse(local))
 }
 
 

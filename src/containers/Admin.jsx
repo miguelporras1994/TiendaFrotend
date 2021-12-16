@@ -11,18 +11,26 @@ import { SaveSearch } from '../actions';
 
 const Admin = (props) => {
 
-  const  setValues = (event) => {
+  const setValues = (event) => {
     console.log(event);
-    props.SaveSearch(event);
-      };
-
-if(props.Result.length  == 0){
-useEffect(() => {
-fetch(`http://localhost:3002/api/products`)
- .then((Response) => Response.json())
- .then((data) => setValues(data.data));
-}, []);
+   
+    if(event === null){
+    useEffect(() => {
+     fetch(`http://localhost:3002/api/products`)
+       .then((Response) => Response.json())
+       .then((data) => props.SaveSearch(data.data));
+   }, []);
+ }
+ else{
+   props.SaveSearch(event);
+ }
 };
+
+
+if(props.Result.length ===  0 ){
+let local = window.localStorage.getItem('text')
+setValues(JSON.parse(local))
+}
 
 
   return props.Result.length  == 0 ? <h1>cargando ..</h1> : (
